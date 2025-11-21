@@ -25,7 +25,7 @@ struct AgeCareApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TopTabView()
         }
         .modelContainer(sharedModelContainer)
     }
