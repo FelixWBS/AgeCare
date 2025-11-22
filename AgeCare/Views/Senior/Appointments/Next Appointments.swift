@@ -23,6 +23,7 @@ struct Next_Appointments: View {
                 Text("Next Appointment:")
                     .font(.title2).bold()
                     .foregroundStyle(.primary)
+                    
                 AppointmentListView(appointment: next)
             } else {
                 ContentUnavailableView("No upcoming appointments", systemImage: "calendar")

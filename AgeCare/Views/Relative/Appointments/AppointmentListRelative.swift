@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AppointmentListRelative: View {
     @State var appointment: Appointment
     @Environment(\.openURL) private var openURL
+    @Query var user: [User]
 
     var body: some View {
         VStack {
@@ -73,13 +75,25 @@ struct AppointmentListRelative: View {
                 if appointment.needRide {
                     
                     Button(action: {
-                        appointment.providedRide.toggle()
+                        if appointment.rideProvider == nil{
+                            appointment.rideProvider = user.first
+                        }
                     }) {
-                        Image(systemName: "car.fill")
-                            .font(.title2)
+                        if let provider = appointment.rideProvider {
+                            if provider.name == user.first?.name{
+                                Image(systemName: "car.fill")
+                                    .font(.title2)
+                            } else {
+                                Text(provider.name + " is driving")
+                            }
+                            
+                        } else {
+                            Image(systemName: "car.fill")
+                                .font(.title2)
+                        }
                     }
                     .buttonStyle(.bordered)
-                    .tint(appointment.providedRide ? .yellow : .primary)
+                    .tint((appointment.rideProvider == nil) ? .red : (appointment.rideProvider?.name == user.first?.name) ? .green : .secondary)
                     .accessibilityLabel("Call \(appointment.title)")
                     
                     Spacer()

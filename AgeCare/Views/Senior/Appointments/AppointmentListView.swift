@@ -65,34 +65,7 @@ struct AppointmentListView: View {
                 }
                 
             }.padding()
-            if appointment.needRide && appointment.providedRide {
-                Button {
-                    
-                } label: {
-                    
-                    Text("Ride Provided")
-                    Image(systemName: "car.fill")
-                        .font(.title2)
-                    
-                }
-                .padding()
-                .buttonStyle(.bordered)
-                .tint(.green)
-                .accessibilityLabel("Ride Provided")
-            } else if appointment.needRide && !appointment.providedRide{
-                Button {
-                    appointment.needRide.toggle()
-                } label: {
-                    Text("Ride Requested")
-                    Image(systemName: "car.fill")
-                        .font(.title2)
-                    
-                }
-                .buttonStyle(.bordered)
-                .tint(.blue)
-                .accessibilityLabel("Ride Requested")
-                .padding()
-            } else {
+            if !appointment.needRide{
                 Button {
                     appointment.needRide.toggle()
                 } label: {
@@ -103,6 +76,33 @@ struct AppointmentListView: View {
                 }
                 .buttonStyle(.bordered)
                 .tint(.red)
+                .accessibilityLabel("Ride Requested")
+                .padding()
+            } else if let provider = appointment.rideProvider {
+                Button {
+                    
+                } label: {
+                    
+                    Text(provider.name + " is taking you")
+                    Image(systemName: "car.fill")
+                        .font(.title2)
+                    
+                }
+                .padding()
+                .buttonStyle(.bordered)
+                .tint(.green)
+                .accessibilityLabel("Ride Provided")
+            } else {
+                Button {
+                    appointment.needRide.toggle()
+                } label: {
+                    Text("Ride Requested")
+                    Image(systemName: "car.fill")
+                        .font(.title2)
+                    
+                }
+                .buttonStyle(.bordered)
+                .tint(.blue)
                 .accessibilityLabel("Ride Requested")
                 .padding()
             }

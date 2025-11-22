@@ -9,14 +9,14 @@ import SwiftData
 
 struct TopTabView: View {
     @State private var selectedTab: Tabs = .home
+    @Environment(\.modelContext) private var modelContext
+
     
     var body: some View {
         TabView(selection: $selectedTab){
             Tab("Home", systemImage: "house", value: .home){
                 NavigationStack{
                     ContentView()
-                        .navigationTitle("Welcome")
-                        .toolbarTitleDisplayMode(.inlineLarge)
                 }
             }
             Tab("Contacts", systemImage: "person", value: .contacts){
@@ -40,4 +40,5 @@ struct TopTabView: View {
 
 #Preview {
     TopTabView()
+        .modelContainer(for: [User.self, Contact.self, Appointment.self], inMemory: true)
 }
