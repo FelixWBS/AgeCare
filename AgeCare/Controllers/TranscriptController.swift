@@ -32,14 +32,17 @@ final class TranscriptController: ObservableObject {
     private var volatileTranscript: String = ""
 
     private let locale: Locale
+    
+    private let app_con: AppointmentController
 
     /// Set true to prefer on-device recognition when available (iOS 13+ and supported locale)
     var preferOnDeviceRecognition: Bool = false
 
     // MARK: - Init
-    init(locale: Locale = Locale(identifier: Locale.preferredLanguages.first ?? "en-US")) {
+    init(locale: Locale = Locale(identifier: Locale.preferredLanguages.first ?? "en-US"), appointmentController: AppointmentController) {
         self.locale = locale
         self.speechRecognizer = Self.makeRecognizer(for: locale)
+        self.app_con = appointmentController
     }
 
     // MARK: - Public API
@@ -116,8 +119,10 @@ final class TranscriptController: ObservableObject {
 
             state = .idle
             
+            
+            // API CALL
             Task {
-                await callServer(message: text)
+                await callServer(message: text, appointmentController: self.app_con)
             }
             
             print(text)

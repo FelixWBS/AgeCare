@@ -14,7 +14,7 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var isRecording: Bool = false
-    @State private var transcriptController = TranscriptController()
+    @State private var transcriptController: TranscriptController? = nil
 
     var body: some View {
         NavigationStack{

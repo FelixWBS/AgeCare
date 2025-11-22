@@ -27,6 +27,21 @@ final class AppointmentController {
         let appointment = Appointment(title: title, nameOfDoctor: nameOfDoctor, date: date, location: location, phoneNumber: phoneNumber, notes: notes)
         modelContext.insert(appointment)
         do { try modelContext.save(); print("✅ Termin gespeichert: \(appointment.title)") } catch { print("❌ Fehler beim Speichern des Termins: \(error)") }
+        
+        
+        let notificationController = NotificationController()
+        let contactcontroller = ContactController(modelContext: modelContext)
+        
+        var contacts: [Contact] = []
+        
+        do {
+            try contacts = contactcontroller.fetchAll()
+        } catch {
+            print("Fehler beim Fetchen der Kontakte")
+        }
+        
+        notificationController.notifyRelatives(appointment: appointment, contacts: contacts, context: modelContext)
+        
         return appointment
     }
 

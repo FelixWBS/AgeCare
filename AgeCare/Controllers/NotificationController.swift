@@ -64,7 +64,7 @@ final class NotificationController {
         content.body = "Appointment \"\(appointment.title)\" created. Relatives: \(joinedNames)"
         content.sound = .default
 
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
 
         UNNotificationRequest(
             identifier: UUID().uuidString,
