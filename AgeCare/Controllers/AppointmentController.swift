@@ -24,7 +24,7 @@ final class AppointmentController {
     // MARK: - Create (simple)
     @discardableResult
     func add(title: String, date: Date, location: String? = nil, phoneNumber: String? = nil, notes: String? = nil) -> Appointment {
-        let appointment = Appointment(title: title, date: date, location: location, phoneNumber: phoneNumber, notes: notes)
+        let appointment = Appointment(title: title, nameOfDoctor: <#String#>, date: date, location: location, phoneNumber: phoneNumber, notes: notes)
         modelContext.insert(appointment)
         do { try modelContext.save(); print("✅ Termin gespeichert: \(appointment.title)") } catch { print("❌ Fehler beim Speichern des Termins: \(error)") }
         return appointment
@@ -63,7 +63,7 @@ final class AppointmentController {
         let date = Calendar.current.date(byAdding: .hour, value: 1, to: .now) ?? .now
         
         let appointment = Appointment(
-            title: text,
+            title: text, nameOfDoctor: <#String#>,
             date: date,
             location: nil,
             phoneNumber: nil,

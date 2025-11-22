@@ -15,14 +15,16 @@ import SwiftData
 
 @Model
 class Appointment {
-    var title: String           // Arztname / Terminbeschreibung
+    var title: String           // Terminbeschreibung
+    var nameOfDoctor: String
     var date: Date             // Datum + Uhrzeit
     var location: String?      // z.B. Praxisadresse
     var phoneNumber: String?   // optionale Telefonnummer
     var notes: String?
 
-    init(title: String, date: Date, location: String? = nil, phoneNumber: String? = nil, notes: String? = nil) {
+    init(title: String, nameOfDoctor: String, date: Date, location: String? = nil, phoneNumber: String? = nil, notes: String? = nil) {
         self.title = title
+        self.nameOfDoctor = nameOfDoctor
         self.date = date
         self.location = location
         self.phoneNumber = phoneNumber
