@@ -75,6 +75,7 @@ struct AppointmentListView: View {
 #Preview {
     var mock: Appointment = Appointment.init(
         title: "Checkup Appointment",
+        nameOfDoctor: "Dr. Fantasic",
         date: Date.now,
         location: "Boltzmanstraße 1",
         phoneNumber: "0176 82764264",
