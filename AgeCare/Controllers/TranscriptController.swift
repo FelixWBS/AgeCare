@@ -116,7 +116,11 @@ final class TranscriptController: ObservableObject {
             onDidFinishTranscript?(transcript)
 
             state = .idle
-            print("Hello World")
+            
+            Task {
+                await callServer(message: text)
+            }
+            
             print(text)
         }
     }
