@@ -13,6 +13,7 @@ struct OnboardingView: View {
     @Query var user: [User]
     @State var showSenior: Bool = false
     @State var showRelative: Bool = false
+    @State var showRelative2: Bool = false
     private var userController: UserController {
         UserController(modelContext: modelContext)
     }
@@ -28,7 +29,6 @@ struct OnboardingView: View {
                 Button(action: {
                     print("Test")
                     userController.add(name: "Hildegart", role: UserRole.senior)
-                    userController.add(name: "Tatiana", role: UserRole.relative)
                     contactController.add(name: "Tatiana", phone: "0152 24608530", relation: "Daughter")
                     contactController.add(name: "Dr.Fantasic", phone: "01512 9709955", relation: "Family Doctor")
                     appointmentController.add(title: "Checkup Appointment",nameOfDoctor: "Dr. Fantasic",
@@ -57,10 +57,18 @@ struct OnboardingView: View {
                 if showSenior {
                     TopTabView()
                 } else if showRelative{
+                    
+                    TopTabRelative()
+                } else if showRelative2{
+                    
                     TopTabRelative()
                 } else {
                     Spacer()
                     Button(action: {
+                        if let relative = user.first {
+                            relative.name = "Hildegart"
+                            relative.role = UserRole.senior
+                        }
                         showSenior = true
                     }) {
                         ZStack {
@@ -78,6 +86,10 @@ struct OnboardingView: View {
                         .bold()
                     Spacer()
                     Button(action: {
+                        if let relative = user.first {
+                            relative.name = "Tatiana"
+                            relative.role = UserRole.relative
+                        }
                         showRelative = true
                     }) {
                         ZStack {
@@ -90,11 +102,31 @@ struct OnboardingView: View {
                         }
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel("relative")
-                    Text("Relative")
+                    .accessibilityLabel("relative Tatiana")
+                    Text("Relative Tatiana")
                         .bold()
                     Spacer()
-                    
+                    Button(action: {
+                        if let relative = user.first {
+                            relative.name = "Max"
+                            relative.role = UserRole.relative
+                        }
+                        showRelative2 = true
+                    }) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: 80, height: 80)
+                                .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 3)
+                            Text("🤝")
+                            
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("relative Max")
+                    Text("Relative Max")
+                        .bold()
+                    Spacer()
                 }
             }
         }

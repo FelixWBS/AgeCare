@@ -15,6 +15,7 @@ struct HomeRelative: View {
     @Environment(\.modelContext) private var modelContext
     @State private var isRecording: Bool = false
     @State private var transcriptController: TranscriptController? = nil
+    @Query var user: [User]
 
     var body: some View {
         NavigationStack{
@@ -22,6 +23,11 @@ struct HomeRelative: View {
                 Color.colorRe
                     .ignoresSafeArea()
                 VStack {
+                    Text("Welcome " + user.first!.name + "!")
+                        .padding()
+                        .font(.largeTitle)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .bold()
                     Next_AppointmentsRelative()
                     Spacer()
                     Button(action: {

@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct AppointmentsRelative: View {
+struct Summaries: View {
     @Environment(\.modelContext) private var modelContext
     @Query var appointments: [Appointment]
     
@@ -19,14 +19,14 @@ struct AppointmentsRelative: View {
             if !appointments.isEmpty{
                 ScrollView(showsIndicators: false){
                     ForEach(appointments, id: \.self) { appointment in
-                        if appointment.summary == nil {
-                            AppointmentListRelative(appointment: appointment);
+                        if appointment.summary != nil {
+                            AppointmentWithSummary(appointment: appointment);
                         }
                     }
                 }
                 .padding()
             } else {
-                ContentUnavailableView("No appointments", systemImage: "calendar")
+                ContentUnavailableView("No upcoming appointments", systemImage: "calendar")
             }
         }
     }

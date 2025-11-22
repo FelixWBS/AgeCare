@@ -76,15 +76,15 @@ struct AppointmentListRelative: View {
                     
                     Button(action: {
                         if appointment.rideProvider == nil{
-                            appointment.rideProvider = user.first
+                            appointment.rideProvider = user.first?.name
                         }
                     }) {
                         if let provider = appointment.rideProvider {
-                            if provider.name == user.first?.name{
+                            if provider == user.first!.name{
                                 Image(systemName: "car.fill")
                                     .font(.title2)
                             } else {
-                                Text(provider.name + " is driving")
+                                Text(provider + " is driving")
                             }
                             
                         } else {
@@ -93,7 +93,7 @@ struct AppointmentListRelative: View {
                         }
                     }
                     .buttonStyle(.bordered)
-                    .tint((appointment.rideProvider == nil) ? .red : (appointment.rideProvider?.name == user.first?.name) ? .green : .secondary)
+                    .tint((appointment.rideProvider == nil) ? .red : (appointment.rideProvider == user.first?.name) ? .green : .secondary)
                     .accessibilityLabel("Call \(appointment.title)")
                     
                     Spacer()
@@ -102,6 +102,9 @@ struct AppointmentListRelative: View {
             
             
 
+        }
+        .onAppear(){
+            print(user.first!.name)
         }
         .frame(height: 200)
         .glassEffect(in: .rect(cornerRadius: 10.0))

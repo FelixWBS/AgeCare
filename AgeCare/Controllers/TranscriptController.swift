@@ -162,7 +162,7 @@ final class TranscriptController: ObservableObject {
             
             // API CALL
             Task {
-                await callServer(message: text, appointmentController: self.app_con)
+                await callServer_summary(text: text, appointment: appointment)
             }
             
             print(text)

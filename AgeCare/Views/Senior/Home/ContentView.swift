@@ -27,7 +27,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             if atDoctor {
-                RecordSummary(transcriptController: transcriptController ?? TranscriptController(appointmentController: AppointmentController(modelContext: modelContext)), atDoctor: $atDoctor)
+                RecordSummary(transcriptController: transcriptController ?? TranscriptController(appointmentController: AppointmentController(modelContext: modelContext)), appointment: nextAppointment!, atDoctor: $atDoctor )
             } else {
                 VStack {
                     Text("Welcome " + user.first!.name + "!")

@@ -15,14 +15,20 @@ struct TopTabRelative: View {
             Tab("Home", systemImage: "house", value: .home){
                 NavigationStack{
                     HomeRelative()
-                        .navigationTitle("Welcome")
-                        .toolbarTitleDisplayMode(.inlineLarge)
                 }
             }
             Tab("Appointments", systemImage: "calendar", value: .appointments){
                 NavigationStack{
                     AppointmentsRelative()
                         .navigationTitle("Appointments")
+                        .toolbarTitleDisplayMode(.inlineLarge)
+                }
+               
+            }
+            Tab("Summaries", systemImage: "list.bullet", value: .summaries){
+                NavigationStack{
+                    Summaries()
+                        .navigationTitle("Summeries")
                         .toolbarTitleDisplayMode(.inlineLarge)
                 }
                

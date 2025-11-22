@@ -12,6 +12,7 @@ struct RecordSummary: View {
     @Environment(\.modelContext) private var modelContext
     @State private var isRecording: Bool = false
     @State var transcriptController: TranscriptController
+    @State var appointment: Appointment
     @Binding var atDoctor: Bool
     @Query var user: [User]
     
@@ -34,7 +35,7 @@ struct RecordSummary: View {
                 Spacer()
                 Button(action: {
                     if isRecording {
-                        transcriptController.stopRecording()
+                        transcriptController.stopRecordingSummary(appointment:  appointment)
                     } else {
                         transcriptController.startRecording()
                     }
