@@ -127,7 +127,46 @@ final class TranscriptController: ObservableObject {
             
             print(text)
         }
-        
+    }
+    
+    func stopRecordingSummary(appointment: Appointment) {
+        print("Stop recording called")
+        Task { @MainActor [weak self] in
+            guard let self else { return }
+
+            state = .stopping
+
+            if audioEngine.isRunning {
+                audioEngine.stop()
+                audioEngine.inputNode.removeTap(onBus: 0)
+            }
+
+            recognitionRequest?.endAudio()
+            recognitionRequest = nil
+            recognitionTask = nil
+
+            // Deactivate audio session
+            do {
+                try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+            } catch {
+                print("❌ Error deactivating audio session: \(error)")
+            }
+
+            // Compose final transcript: prefer finalized, fallback to current volatile text
+            let text = finalizedTranscript.isEmpty ? currentText : finalizedTranscript
+            let transcript = Transcript(text: text)
+            onDidFinishTranscript?(transcript)
+
+            state = .idle
+            
+            
+            // API CALL
+            Task {
+                await callServer(message: text, appointmentController: self.app_con)
+            }
+            
+            print(text)
+        }
     }
 
     // MARK: - Private helpers
