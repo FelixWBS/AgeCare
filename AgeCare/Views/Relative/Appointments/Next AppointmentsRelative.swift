@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct Next_AppointmentsRealtive: View {
+struct Next_AppointmentsRelative: View {
     @Environment(\.modelContext) private var modelContext
     @Query var appointments: [Appointment]
     private var nextAppointment: Appointment? {
@@ -33,6 +33,6 @@ struct Next_AppointmentsRealtive: View {
 }
 
 #Preview {
-    Next_Appointments()
+    Next_AppointmentsRelative()
         .modelContainer(for: [User.self, Contact.self, Appointment.self], inMemory: true)
 }

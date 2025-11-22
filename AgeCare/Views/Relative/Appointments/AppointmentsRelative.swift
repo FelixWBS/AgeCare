@@ -13,14 +13,19 @@ struct AppointmentsRelative: View {
     @Query var appointments: [Appointment]
     
     var body: some View {
-        if !appointments.isEmpty{
-            List{
-                ForEach(appointments, id: \.self) { appointment in
-                    AppointmentListView(appointment: appointment);
+        ZStack{
+            Color.colorRe
+                .ignoresSafeArea()
+            if !appointments.isEmpty{
+                ScrollView(showsIndicators: false){
+                    ForEach(appointments, id: \.self) { appointment in
+                        AppointmentListRelative(appointment: appointment);
+                    }
                 }
+                .padding()
+            } else {
+                ContentUnavailableView("No upcoming appointments", systemImage: "calendar")
             }
-        } else {
-            ContentUnavailableView("No upcoming appointments", systemImage: "calendar")
         }
     }
 }

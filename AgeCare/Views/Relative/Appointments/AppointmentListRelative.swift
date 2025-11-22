@@ -13,12 +13,23 @@ struct AppointmentListRelative: View {
 
     var body: some View {
         VStack {
+            
             HStack {
+                
                 // Contact information
                 VStack(alignment: .leading, spacing: 4) {
                     Text(appointment.title)
-                        .font(.headline)
+                        .font(.title)
                         .foregroundStyle(.primary)
+                        .bold()
+                    HStack{
+                        Text(appointment.date, format: .dateTime.weekday(.wide))
+                        Text(appointment.date, format: .dateTime.day().month().year())
+                            
+                        Text(appointment.date, format: .dateTime.hour().minute())
+                    }
+                    .font(.headline)
+                    .foregroundStyle(.primary)
                     if let location = appointment.location, !location.isEmpty {
                         Text(location)
                             .font(.subheadline)
@@ -29,11 +40,15 @@ struct AppointmentListRelative: View {
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                     }
-                }.padding(.leading)
-
+                }
                 Spacer()
 
                 // Quick actions
+                
+            }.padding()
+                
+            HStack{
+                Spacer()
                 VStack(alignment: .trailing, spacing: 12) {
                     Button {
                         if let raw = appointment.phoneNumber, !raw.isEmpty {
@@ -49,22 +64,32 @@ struct AppointmentListRelative: View {
                             .font(.title2)
                     }
                     .buttonStyle(.bordered)
-                    .tint(.green)
+                    .tint(.blue)
                     .accessibilityLabel("Call \(appointment.title)")
                     .disabled((appointment.phoneNumber?.isEmpty) ?? true)
 
                 }.padding(.trailing)
-            }.padding(.bottom)
-            HStack(spacing: 8) {
-                Text(appointment.date, format: .dateTime.weekday(.wide))
-                Text(appointment.date, format: .dateTime.day().month().year())
-                Text(appointment.date, format: .dateTime.hour().minute())
-            }
-            .font(.headline)
-            .foregroundStyle(.primary)
+                Spacer()
+                if appointment.needRide {
+                    
+                    Button(action: {
+                        appointment.providedRide.toggle()
+                    }) {
+                        Image(systemName: "car.fill")
+                            .font(.title2)
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(appointment.providedRide ? .yellow : .primary)
+                    .accessibilityLabel("Call \(appointment.title)")
+                    
+                    Spacer()
+                }
+            }.padding()
+            
+            
 
         }
-        .frame(height: 150)
+        .frame(height: 200)
         .glassEffect(in: .rect(cornerRadius: 10.0))
         .mask {
             RoundedRectangle(cornerRadius: 20, style: .continuous)

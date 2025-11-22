@@ -11,6 +11,8 @@ import SwiftData
 struct OnboardingView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var user: [User]
+    @State var showSenior: Bool = false
+    @State var showRelative: Bool = false
     private var userController: UserController {
         UserController(modelContext: modelContext)
     }
@@ -21,7 +23,7 @@ struct OnboardingView: View {
         AppointmentController(modelContext: modelContext)
     }
     var body: some View {
-        NavigationStack{
+        VStack{
             if user.isEmpty{
                 Button(action: {
                     print("Test")
@@ -39,7 +41,7 @@ struct OnboardingView: View {
                                               location: "Boltzmanstraße 1",
                                               phoneNumber: "0176 82764264",
                                               notes: "Regular chekup appointment with Dr. Fantasic")
-
+                    
                 }){
                     ZStack {
                         Circle()
@@ -52,44 +54,48 @@ struct OnboardingView: View {
                 }
                 .buttonStyle(.plain)
             } else {
-                Spacer()
-                NavigationLink {
+                if showSenior {
                     TopTabView()
-                        .navigationBarBackButtonHidden()
-                } label: {
-                    ZStack {
-                        Circle()
-                            .fill(Color.white)
-                            .frame(width: 80, height: 80)
-                            .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 3)
-                        Text("🧓")
-                        
-                    }
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Senior")
-                Text("Senior")
-                    .bold()
-                Spacer()
-                NavigationLink{
+                } else if showRelative{
                     TopTabRelative()
-                        .navigationBarBackButtonHidden()
-                } label: {
-                    ZStack {
-                        Circle()
-                            .fill(Color.white)
-                            .frame(width: 80, height: 80)
-                            .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 3)
-                        Text("🤝")
-                        
+                } else {
+                    Spacer()
+                    Button(action: {
+                        showSenior = true
+                    }) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: 80, height: 80)
+                                .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 3)
+                            Text("🧓")
+                            
+                        }
                     }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Senior")
+                    Text("Senior")
+                        .bold()
+                    Spacer()
+                    Button(action: {
+                        showRelative = true
+                    }) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: 80, height: 80)
+                                .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 3)
+                            Text("🤝")
+                            
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("relative")
+                    Text("Relative")
+                        .bold()
+                    Spacer()
+                    
                 }
-                .buttonStyle(.plain)
-                .accessibilityLabel("relative")
-                Text("Relative")
-                    .bold()
-                Spacer()
-                
             }
         }
         .onAppear(){
@@ -97,6 +103,7 @@ struct OnboardingView: View {
         }
     }
 }
+    
 
 #Preview {
     OnboardingView()

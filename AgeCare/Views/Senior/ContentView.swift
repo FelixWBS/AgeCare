@@ -22,13 +22,15 @@ struct ContentView: View {
                 Next_Appointments()
                 Spacer()
                 Button(action: {
-                    if isRecording {
-                        transcriptController.stopRecording()
-                    } else {
-                        transcriptController.startRecording()
-                    }
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        isRecording.toggle()
+                    if let controller = transcriptController{
+                        if isRecording {
+                            controller.stopRecording()
+                        } else {
+                            controller.startRecording()
+                        }
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            isRecording.toggle()
+                        }
                     }
                 }) {
                     ZStack {
@@ -38,7 +40,7 @@ struct ContentView: View {
                             .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 3)
                         Image(systemName: isRecording ? "stop.fill" : "mic.fill")
                             .font(.system(size: 28, weight: .bold))
-                            .foregroundStyle(isRecording ? Color.BW : Color.primary)
+                            .foregroundStyle(isRecording ? Color("BWColor"): Color.primary)
                     }
                 }
                 .buttonStyle(.plain)
@@ -46,6 +48,9 @@ struct ContentView: View {
                 Spacer()
             }
             .background(Color("Color"))
+        }
+        .onAppear() {
+            transcriptController = TranscriptController(appointmentController: AppointmentController(modelContext: modelContext))
         }
     }
 

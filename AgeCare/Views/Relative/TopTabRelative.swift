@@ -13,15 +13,24 @@ struct TopTabRelative: View {
     var body: some View {
         TabView(selection: $selectedTab){
             Tab("Home", systemImage: "house", value: .home){
-                HomeRelative()
+                NavigationStack{
+                    HomeRelative()
+                        .navigationTitle("Welcome")
+                        .toolbarTitleDisplayMode(.inlineLarge)
+                }
             }
             Tab("Appointments", systemImage: "calendar", value: .appointments){
-                AppointmentsRelative()
+                NavigationStack{
+                    AppointmentsRelative()
+                        .navigationTitle("Appointments")
+                        .toolbarTitleDisplayMode(.inlineLarge)
+                }
+               
             }
         }
     }
 }
 
 #Preview {
-    TopTabView()
+    TopTabRelative()
 }

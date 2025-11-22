@@ -21,6 +21,8 @@ class Appointment {
     var location: String?      // z.B. Praxisadresse
     var phoneNumber: String?   // optionale Telefonnummer
     var notes: String?
+    var needRide: Bool = true
+    var providedRide: Bool = false
 
     init(title: String, nameOfDoctor: String, date: Date, location: String? = nil, phoneNumber: String? = nil, notes: String? = nil) {
         self.title = title
