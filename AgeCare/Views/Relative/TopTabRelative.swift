@@ -15,7 +15,7 @@ struct TopTabRelative: View {
             Tab("Home", systemImage: "house", value: .home){
                 HomeRelative()
             }
-            Tab("Appointments", systemImage: "calendar", value: .home){
+            Tab("Appointments", systemImage: "calendar", value: .appointments){
                 AppointmentsRelative()
             }
         }

@@ -13,7 +13,8 @@ struct Next_Appointments: View {
     @Query var appointments: [Appointment]
     
     private var nextAppointment: Appointment? {
-        appointments.first { $0.date >= Date() }
+        let startOfToday = Calendar.current.startOfDay(for: Date())
+        return appointments.first { $0.date >= startOfToday }
     }
     
     var body: some View {
@@ -22,7 +23,7 @@ struct Next_Appointments: View {
                 Text("Next Appointment:")
                     .font(.title2).bold()
                     .foregroundStyle(.primary)
-                AppointmentListView(appointment: appointments.first!)
+                AppointmentListView(appointment: next)
             } else {
                 ContentUnavailableView("No upcoming appointments", systemImage: "calendar")
             }

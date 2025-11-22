@@ -13,13 +13,26 @@ struct TopTabView: View {
     var body: some View {
         TabView(selection: $selectedTab){
             Tab("Home", systemImage: "house", value: .home){
-                ContentView()
+                NavigationStack{
+                    ContentView()
+                        .navigationTitle("Welcome")
+                        .toolbarTitleDisplayMode(.inlineLarge)
+                }
             }
-            Tab("Contacts", systemImage: "person", value: .home){
-                ContactsView()
+            Tab("Contacts", systemImage: "person", value: .contacts){
+                NavigationStack{
+                    ContactsView()
+                        .navigationTitle("Contacts")
+                        .toolbarTitleDisplayMode(.inlineLarge)
+                }
+                
             }
-            Tab("Appointments", systemImage: "calendar", value: .home){
-                Appointments()
+            Tab("Appointments", systemImage: "calendar", value: .appointments){
+                NavigationStack{
+                    Appointments()
+                        .navigationTitle("Appointments")
+                        .toolbarTitleDisplayMode(.inlineLarge)
+                }
             }
         }
     }

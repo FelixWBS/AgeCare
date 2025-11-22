@@ -29,8 +29,13 @@ struct OnboardingView: View {
                     userController.add(name: "Tatiana", role: UserRole.relative)
                     contactController.add(name: "Tatiana", phone: "0152 24608530", relation: "Daughter")
                     contactController.add(name: "Dr.Fantasic", phone: "01512 9709955", relation: "Family Doctor")
-                    appointmentController.add(title: "Checkup Appointment",
+                    appointmentController.add(title: "Checkup Appointment",nameOfDoctor: "Dr. Fantasic",
                                               date: Date.now,
+                                              location: "Boltzmanstraße 1",
+                                              phoneNumber: "0176 82764264",
+                                              notes: "Regular chekup appointment with Dr. Fantasic")
+                    appointmentController.add(title: "Checkup Appointment 2",nameOfDoctor: "Dr. Fantasic",
+                                              date: Calendar.current.date(byAdding: .day, value: 1, to: Date.now)!,
                                               location: "Boltzmanstraße 1",
                                               phoneNumber: "0176 82764264",
                                               notes: "Regular chekup appointment with Dr. Fantasic")
@@ -84,6 +89,7 @@ struct OnboardingView: View {
                 Text("Relative")
                     .bold()
                 Spacer()
+                
             }
         }
     }

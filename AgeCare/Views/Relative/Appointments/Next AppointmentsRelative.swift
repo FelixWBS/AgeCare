@@ -11,15 +11,18 @@ import SwiftData
 struct Next_AppointmentsRealtive: View {
     @Environment(\.modelContext) private var modelContext
     @Query var appointments: [Appointment]
-    
+    private var nextAppointment: Appointment? {
+        let startOfToday = Calendar.current.startOfDay(for: Date())
+        return appointments.first { $0.date >= startOfToday }
+    }
     
     var body: some View {
         VStack() {
-            if !appointments.isEmpty {
+            if let next = nextAppointment {
                 Text("Next Appointment:")
                     .font(.title2).bold()
                     .foregroundStyle(.primary)
-               AppointmentListRelative(appointment: appointments.first!)
+                AppointmentListRelative(appointment: next)
             } else {
                 ContentUnavailableView("No upcoming appointments", systemImage: "calendar")
             }

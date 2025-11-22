@@ -14,14 +14,19 @@ struct ContactsView: View {
     @Query var contacts: [Contact]
     
     var body: some View {
-        if !contacts.isEmpty{
-            List{
-                ForEach(contacts, id: \.self) { contact in
-                    ContactListView(contact: contact);
+        ZStack{
+            Color.color
+                .ignoresSafeArea()
+            if !contacts.isEmpty{
+                ScrollView(showsIndicators: false) {
+                    ForEach(contacts, id: \.self) { contact in
+                        ContactListView(contact: contact);
+                    }
                 }
+                .padding()
+            } else {
+                ContentUnavailableView("No Contacts", systemImage: "person")
             }
-        } else {
-            ContentUnavailableView("No Contacts", systemImage: "person")
         }
     }
 }

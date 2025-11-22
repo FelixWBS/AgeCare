@@ -65,7 +65,7 @@ struct AppointmentListView: View {
 
         }
         .frame(height: 150)
-        .glassEffect(in: .rect(cornerRadius: 10.0))
+        .background(Color("BWColor"))
         .mask {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
         }
