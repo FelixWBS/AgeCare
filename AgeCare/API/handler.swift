@@ -10,6 +10,34 @@ import Foundation
 
 
 
+func callServer_summary(text: String, appointment: Appointment) async {
+    guard let url = URL(string: "http://127.0.0.1:8000/summary") else { return }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    let body: [String: Any] = ["text": text]
+    do {
+        request.httpBody = try JSONSerialization.data(withJSONObject: body)
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        // Decode JSON as dictionary
+        if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+           let response = json["response"] as? String {
+            print("Summary: \(response)")
+            
+            appointment.summary = response
+        } else {
+            print("Invalid JSON format")
+        }
+    } catch {
+        print("Fehler beim Zusammenfassen: \(error)")
+    }
+}
+
+
 
 func callServer(message: String? = nil, appointmentController: AppointmentController) async {
     // Replace with your FastAPI backend URL
@@ -17,7 +45,7 @@ func callServer(message: String? = nil, appointmentController: AppointmentContro
     
     var responseText: String = "NO TEXT"
     
-    guard let url = URL(string: "http://127.0.0.1:8000/prompt") else {
+    guard let url = URL(string: "http://127.0.0.1:8000/appointment") else {
         responseText = "Invalid URL"
         return
     }
