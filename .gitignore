@@ -1,9 +1,3 @@
-# Ignoriere alles im Root-Verzeichnis
 /*
-
-# Erlaube nur den AgeCare-Ordner
-!AgeCare/
-!AgeCare/**
-
-# Optional: .gitignore selbst behalten
+!/AgeCare/
 !.gitignore
