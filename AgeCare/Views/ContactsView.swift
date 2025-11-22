@@ -10,9 +10,15 @@ import Contacts
 
 // MARK: - View
 struct ContactsView: View {
-
+    @Environment(\.modelContext) private var modelContext
+    @State var contacts: [String] = []
+    
     var body: some View {
-        
+        List{
+            ForEach(contacts, id: \.self) { contact in
+                Text("Test")
+            }
+        }
     }
 }
 

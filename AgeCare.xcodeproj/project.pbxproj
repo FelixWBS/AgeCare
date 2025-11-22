@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DCFBEE912ED13C2F001316D1 /* .gitignore in Sources */ = {isa = PBXBuildFile; fileRef = DCFBEE902ED13C2D001316D1 /* .gitignore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		DCB852BD2ED1139A0013D2BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		DCB852AD2ED113980013D2BA /* AgeCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgeCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB852BC2ED1139A0013D2BA /* AgeCareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AgeCareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB852C62ED1139A0013D2BA /* AgeCareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AgeCareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCFBEE902ED13C2D001316D1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		DCB852A42ED113980013D2BA = {
 			isa = PBXGroup;
 			children = (
+				DCFBEE902ED13C2D001316D1 /* .gitignore */,
 				DCB852AF2ED113980013D2BA /* AgeCare */,
 				DCB852BF2ED1139A0013D2BA /* AgeCareTests */,
 				DCB852C92ED1139A0013D2BA /* AgeCareUITests */,
@@ -236,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCFBEE912ED13C2F001316D1 /* .gitignore in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +407,6 @@
 				DEVELOPMENT_TEAM = S3CPP66C9N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSContactsUsageDescription = "For communication usage";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -433,7 +439,6 @@
 				DEVELOPMENT_TEAM = S3CPP66C9N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSContactsUsageDescription = "For communication usage";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
