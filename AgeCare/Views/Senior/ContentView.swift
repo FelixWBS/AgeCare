@@ -17,8 +17,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack{
-            VStack{
-                Spacer()
+            VStack {
                 Next_Appointments()
                 Spacer()
                 Button(action: {

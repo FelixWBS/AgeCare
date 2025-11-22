@@ -32,39 +32,56 @@ final class TranscriptController: ObservableObject {
     // MARK: - Public API
     func startRecording() {
         // Request permissions if needed
-        Task { [weak self] in
-            guard let self else { return }
-            let authGranted = await Self.requestSpeechAuthorization()
-            let micGranted = await Self.requestMicrophonePermission()
-            guard authGranted && micGranted else { return }
-            self.configureAndStartRecognition()
-        }
+        Task { @MainActor [weak self] in
+                guard let self else { return }
+                let authGranted = await Self.requestSpeechAuthorization()
+                let micGranted = await Self.requestMicrophonePermission()
+                guard authGranted && micGranted else {
+                    print("❌ Permissions not granted")
+                    return
+                }
+                await self.configureAndStartRecognition()
+            }
     }
 
     func stopRecording() {
-        // Stop audio and recognition
-        audioEngine.stop()
-        audioEngine.inputNode.removeTap(onBus: 0)
-        recognitionRequest?.endAudio()
-        recognitionTask?.cancel()
-        recognitionTask = nil
-
-        // Create model and notify
-        let transcript = Transcript(text: currentText)
-        onDidFinishTranscript?(transcript)
+        if audioEngine.isRunning {
+                audioEngine.stop()
+                audioEngine.inputNode.removeTap(onBus: 0)
+            }
+            
+            recognitionRequest?.endAudio()
+            recognitionTask?.cancel()
+            recognitionTask = nil
+            recognitionRequest = nil
+            
+            // Kurze Verzögerung, damit Audio I/O wirklich beendet ist
+            Task { @MainActor in
+                try? await Task.sleep(nanoseconds: 100_000_000) // 0.1 Sekunden
+                
+                do {
+                    try AVAudioSession.sharedInstance().setActive(false,
+                        options: .notifyOthersOnDeactivation)
+                } catch {
+                    print("❌ Error deactivating audio session: \(error)")
+                }
+                
+                let transcript = Transcript(text: currentText)
+                print(currentText)
+                onDidFinishTranscript?(transcript)
+            }
     }
 
     // MARK: - Private helpers
     private func configureAndStartRecognition() {
-        // Reset state
         recognitionTask?.cancel()
         recognitionTask = nil
         currentText = ""
 
-        // Prepare audio session
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(.playAndRecord, mode: .measurement, options: [.duckOthers, .allowBluetooth, .defaultToSpeaker])
+            // Bessere Konfiguration für Speech Recognition
+            try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             print("❌ AudioSession error: \(error)")

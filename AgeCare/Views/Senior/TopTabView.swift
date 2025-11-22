@@ -19,7 +19,7 @@ struct TopTabView: View {
                 ContactsView()
             }
             Tab("Appointments", systemImage: "calendar", value: .home){
-                ContentView()
+                Appointments()
             }
         }
     }

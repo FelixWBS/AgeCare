@@ -16,10 +16,24 @@ import SwiftData
 @Model
 class User {
     var name: String
-    var role: String        // "senior" oder "relative"
+    var role: UserRole        // "senior" oder "relative"
     
-    init(name: String, role: String) {
+    init(name: String, role: UserRole) {
         self.name = name
         self.role = role
+    }
+}
+
+enum UserRole: String, Codable, CaseIterable {
+    case senior = "senior"
+    case relative = "relative"
+    
+    var displayName: String {
+        switch self {
+        case .senior:
+            return "Senior"
+        case .relative:
+            return "Relative"
+        }
     }
 }
