@@ -15,6 +15,16 @@ struct TopTabView: View {
             Tab("Home", systemImage: "house", value: .home){
                 ContentView()
             }
+            Tab("Contacts", systemImage: "person", value: .home){
+                ContactsView()
+            }
+            Tab("Appointments", systemImage: "calendar", value: .home){
+                ContentView()
+            }
         }
     }
+}
+
+#Preview {
+    TopTabView()
 }

@@ -10,52 +10,38 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @State private var isRecording: Bool = false
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        NavigationStack{
+            VStack{
+                Spacer()
+                Next_Appointments()
+                Spacer()
+                Button(action: {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        isRecording.toggle()
+                    }
+                }) {
+                    ZStack {
+                        Circle()
+                            .fill(isRecording ? Color.red : Color.white)
+                            .frame(width: 80, height: 80)
+                            .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 3)
+                        Image(systemName: isRecording ? "stop.fill" : "mic.fill")
+                            .font(.system(size: 28, weight: .bold))
+                            .foregroundStyle(isRecording ? Color.white : Color.black)
                     }
                 }
-                .onDelete(perform: deleteItems)
+                .buttonStyle(.plain)
+                .accessibilityLabel(isRecording ? "Aufnahme stoppen" : "Aufnahme starten")
+                Spacer()
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
         }
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
-    }
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+    TopTabView()
 }
