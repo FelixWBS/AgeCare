@@ -99,7 +99,6 @@ final class TranscriptController: ObservableObject {
             }
 
             recognitionRequest?.endAudio()
-            recognitionTask?.cancel()
             recognitionRequest = nil
             recognitionTask = nil
 
@@ -123,6 +122,7 @@ final class TranscriptController: ObservableObject {
             
             print(text)
         }
+        
     }
 
     // MARK: - Private helpers
