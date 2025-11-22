@@ -12,17 +12,14 @@ struct Next_AppointmentsRealtive: View {
     @Environment(\.modelContext) private var modelContext
     @Query var appointments: [Appointment]
     
-    private var nextAppointment: Appointment? {
-        appointments.first { $0.date >= Date() }
-    }
     
     var body: some View {
         VStack() {
-            if let next = nextAppointment {
+            if !appointments.isEmpty {
                 Text("Next Appointment:")
                     .font(.title2).bold()
                     .foregroundStyle(.primary)
-                AppointmentListRelative(appointment: next)
+               AppointmentListRelative(appointment: appointments.first!)
             } else {
                 ContentUnavailableView("No upcoming appointments", systemImage: "calendar")
             }
@@ -34,4 +31,5 @@ struct Next_AppointmentsRealtive: View {
 
 #Preview {
     Next_Appointments()
+        .modelContainer(for: [User.self, Contact.self, Appointment.self], inMemory: true)
 }

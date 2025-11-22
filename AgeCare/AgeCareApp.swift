@@ -12,7 +12,9 @@ import SwiftData
 struct AgeCareApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            
+            User.self,
+            Contact.self,
+            Appointment.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

@@ -19,7 +19,7 @@ struct HomeRelative: View {
     var body: some View {
         NavigationStack{
             VStack {
-                Next_Appointments()
+                Next_AppointmentsRealtive()
                 Spacer()
                 Button(action: {
                     if isRecording {
