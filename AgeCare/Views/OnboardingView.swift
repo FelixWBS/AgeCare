@@ -92,6 +92,9 @@ struct OnboardingView: View {
                 
             }
         }
+        .onAppear(){
+            NotificationController().requestAuthorization()
+        }
     }
 }
 
