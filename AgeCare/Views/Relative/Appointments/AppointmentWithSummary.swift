@@ -12,6 +12,7 @@ struct AppointmentWithSummary: View {
     @State var appointment: Appointment
     @Environment(\.openURL) private var openURL
     @Query var user: [User]
+    @State private var string: String = ""
 
     var body: some View {
         VStack {
@@ -37,10 +38,13 @@ struct AppointmentWithSummary: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                     
-                    if let notes = appointment.summary, !notes.isEmpty {
-                        Text(notes)
+                    if let summary = appointment.summary, !summary.isEmpty {
+                        TextField("Summary",text: $string )
                             .font(.footnote)
                             .foregroundStyle(.secondary)
+                            .onAppear(){
+                                string = summary
+                            }
                     }
                 }
                 Spacer()

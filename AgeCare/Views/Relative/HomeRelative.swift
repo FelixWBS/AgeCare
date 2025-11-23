@@ -16,6 +16,15 @@ struct HomeRelative: View {
     @State private var isRecording: Bool = false
     @State private var transcriptController: TranscriptController? = nil
     @Query var user: [User]
+    @Query var appointments: [Appointment]
+    
+    private var newestAppointmentWithSummary: Appointment? {
+        let startOfToday = Calendar.current.startOfDay(for: Date())
+        // Filter appointments with date >= startOfToday and summary not nil
+        let filtered = appointments.filter { $0.date >= startOfToday && $0.summary != nil }
+        // Return the appointment with the latest date (newest)
+        return filtered.sorted(by: { $0.date > $1.date }).first
+    }
 
     var body: some View {
         NavigationStack{
@@ -29,31 +38,11 @@ struct HomeRelative: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                         .bold()
                     Next_AppointmentsRelative()
-                    Spacer()
-                    Button(action: {
-                        if let controller = transcriptController{
-                            if isRecording {
-                                controller.stopRecording()
-                            } else {
-                                controller.startRecording()
-                            }
-                            withAnimation(.easeInOut(duration: 0.2)) {
-                                isRecording.toggle()
-                            }
-                        }
-                    }) {
-                        ZStack {
-                            Circle()
-                                .frame(width: 80, height: 80)
-                                .glassEffect(isRecording ? .regular.tint(.red).interactive(): .regular.interactive())
-                                
-                            Image(systemName: isRecording ? "stop.fill" : "mic.fill")
-                                .font(.system(size: 28, weight: .bold))
-                                .foregroundStyle(isRecording ? Color.white : Color.black)
-                        }
+                    
+                    if let display = newestAppointmentWithSummary{
+                        Spacer()
+                        AppointmentWithSummary(appointment: display)
                     }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel(isRecording ? "Aufnahme stoppen" : "Aufnahme starten")
                     Spacer()
                 }
             }
