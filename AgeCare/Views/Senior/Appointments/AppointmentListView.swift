@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AppointmentListView: View {
     @State var appointment: Appointment
@@ -21,6 +22,7 @@ struct AppointmentListView: View {
                         .font(.title)
                         .foregroundStyle(.primary)
                         .bold()
+                        .fixedSize(horizontal: false, vertical: true)
                     HStack{
                         Text(appointment.date, format: .dateTime.weekday(.wide))
                         Text(appointment.date, format: .dateTime.day().month().year())
@@ -38,6 +40,7 @@ struct AppointmentListView: View {
                         Text(notes)
                             .font(.footnote)
                             .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
                 Spacer()
@@ -80,7 +83,7 @@ struct AppointmentListView: View {
                 .padding()
             } else if let provider = appointment.rideProvider {
                 Button {
-                    
+    
                 } label: {
                     
                     Text(provider + " is taking you")

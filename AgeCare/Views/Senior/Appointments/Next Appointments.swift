@@ -13,8 +13,9 @@ struct Next_Appointments: View {
     @Query var appointments: [Appointment]
     
     private var nextAppointment: Appointment? {
+        let sortedAppointments = appointments.sorted { $0.date < $1.date }
         let startOfToday = Calendar.current.startOfDay(for: Date())
-        return appointments.first { $0.date >= startOfToday }
+        return sortedAppointments.first { $0.date >= startOfToday && $0.summary == nil }
     }
     
     var body: some View {

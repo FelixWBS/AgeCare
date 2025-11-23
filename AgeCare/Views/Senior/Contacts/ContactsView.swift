@@ -19,11 +19,13 @@ struct ContactsView: View {
                 .ignoresSafeArea()
             if !contacts.isEmpty{
                 ScrollView(showsIndicators: false) {
-                    ForEach(contacts, id: \.self) { contact in
-                        ContactListView(contact: contact);
-                    }
+                    VStack{
+                        ForEach(contacts, id: \.self) { contact in
+                            ContactListView(contact: contact);
+                        }
+                    }.padding()
                 }
-                .padding()
+                
             } else {
                 ContentUnavailableView("No Contacts", systemImage: "person")
             }

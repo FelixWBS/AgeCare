@@ -24,6 +24,7 @@ struct AppointmentListRelative: View {
                         .font(.title)
                         .foregroundStyle(.primary)
                         .bold()
+                        .fixedSize(horizontal: false, vertical: true)
                     HStack{
                         Text(appointment.date, format: .dateTime.weekday(.wide))
                         Text(appointment.date, format: .dateTime.day().month().year())
@@ -41,6 +42,7 @@ struct AppointmentListRelative: View {
                         Text(notes)
                             .font(.footnote)
                             .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
                 Spacer()
@@ -75,6 +77,7 @@ struct AppointmentListRelative: View {
                 if appointment.needRide {
                     
                     Button(action: {
+                        
                         if appointment.rideProvider == nil{
                             appointment.rideProvider = user.first?.name
                         }
@@ -106,7 +109,6 @@ struct AppointmentListRelative: View {
         .onAppear(){
             print(user.first!.name)
         }
-        .frame(height: 200)
         .glassEffect(in: .rect(cornerRadius: 10.0))
         .mask {
             RoundedRectangle(cornerRadius: 20, style: .continuous)

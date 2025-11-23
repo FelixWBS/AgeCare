@@ -26,7 +26,7 @@ struct RecordSummary: View {
                     .font(.largeTitle)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .bold()
-                Text("You should be at an appointment at the Moment. Record it!")
+                Text("You should be at an appointment right now. Record it!")
                     .padding()
                     .font(.title)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -40,6 +40,9 @@ struct RecordSummary: View {
                         transcriptController.startRecording()
                     }
                     withAnimation(.easeInOut(duration: 0.2)) {
+                        if isRecording {
+                            atDoctor = false
+                        }
                         isRecording.toggle()
                     }
                     

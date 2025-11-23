@@ -14,14 +14,14 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var isRecording: Bool = false
-    @State private var atDoctor: Bool = true
+    @State private var atDoctor: Bool = false
     @State private var transcriptController: TranscriptController? = nil
     @Query var user: [User]
     @Query var appointments: [Appointment]
     
     private var nextAppointment: Appointment? {
         let startOfToday = Calendar.current.startOfDay(for: Date())
-        return appointments.first { $0.date >= startOfToday }
+        return appointments.first { $0.date >= startOfToday && $0.summary == nil }
     }
     
     var body: some View {
@@ -39,6 +39,7 @@ struct ContentView: View {
                         .padding(.top)
                     Spacer()
                     Button(action: {
+                        
                         if let controller = transcriptController{
                             if isRecording {
                                 controller.stopRecording()
@@ -49,6 +50,8 @@ struct ContentView: View {
                                 isRecording.toggle()
                             }
                         }
+                         
+                    
                     }) {
                         ZStack {
                             Circle()
@@ -70,9 +73,9 @@ struct ContentView: View {
         .onAppear() {
             if let appointment = nextAppointment {
                 print(appointment.date.distance(to: Date.now))
-                if appointment.date.distance(to: Date.now) < 300 {
+                if appointment.date.distance(to: Date.now) > -300 && appointment.summary == nil {
                     atDoctor = true
-                } else if appointment.date.distance(to: Date.now) > 3600 && !isRecording{
+                } else if (appointment.date.distance(to: Date.now) > 3600 && !isRecording) || appointment.summary != nil{
                     atDoctor = false
                 }
             }

@@ -17,14 +17,18 @@ struct Summaries: View {
             Color.colorRe
                 .ignoresSafeArea()
             if !appointments.isEmpty{
-                ScrollView(showsIndicators: false){
-                    ForEach(appointments, id: \.self) { appointment in
-                        if appointment.summary != nil {
-                            AppointmentWithSummary(appointment: appointment);
-                        }
+                VStack{
+                    ScrollView(showsIndicators: false){
+                        VStack{
+                            ForEach(appointments, id: \.self) { appointment in
+                                if appointment.summary != nil {
+                                    AppointmentWithSummary(appointment: appointment);
+                                }
+                            }
+                        }.padding()
                     }
                 }
-                .padding()
+                
             } else {
                 ContentUnavailableView("No upcoming appointments", systemImage: "calendar")
             }

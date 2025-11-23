@@ -47,16 +47,16 @@ struct AppointmentWithSummary: View {
                                 string = summary
                             }
                     }
-                }.padding(.top)
+                }
                 Spacer()
-
+                
                 // Quick actions
                 
             }.padding()
-                
+            
             HStack{
                 Spacer()
-                VStack(alignment: .trailing, spacing: 12) {
+                VStack{
                     Button {
                         if let raw = appointment.phoneNumber, !raw.isEmpty {
                             let digits = raw.filter {
@@ -74,13 +74,13 @@ struct AppointmentWithSummary: View {
                     .tint(.blue)
                     .accessibilityLabel("Call \(appointment.title)")
                     .disabled((appointment.phoneNumber?.isEmpty) ?? true)
-
-                }.padding(.trailing)
+                    
+                }
                 Spacer()
             }.padding()
             
             
-
+            
         }
         .onAppear(){
             print(user.first!.name)

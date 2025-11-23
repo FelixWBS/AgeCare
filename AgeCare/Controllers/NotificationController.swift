@@ -61,10 +61,12 @@ final class NotificationController {
         // iOS Local Notification (for hackathon demo)
         let content = UNMutableNotificationContent()
         content.title = "New Appointment for your relative"
-        content.body = "Appointment \"\(appointment.title)\" created. Relatives: \(joinedNames)"
+        content.body = "Appointment \"\(appointment.title)\" created."
         content.sound = .default
 
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 40, repeats: false)
+        
+        
 
         UNNotificationRequest(
             identifier: UUID().uuidString,
@@ -88,3 +90,4 @@ infix operator |> : AdditionPrecedence
 func |> <T>(value: T, apply: (T) -> Void) {
     apply(value)
 }
+

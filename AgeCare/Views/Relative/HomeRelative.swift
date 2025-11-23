@@ -38,11 +38,20 @@ struct HomeRelative: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                         .bold()
                     Next_AppointmentsRelative()
-                    
-                    if let display = newestAppointmentWithSummary{
+                        .padding(.bottom)
+                    HStack{
                         Spacer()
+                        Text("Last Appointment:")
+                            .font(.title2).bold()
+                            .foregroundStyle(.primary)
+                        Spacer()
+                    }
+                    .padding(.top)
+                    if let display = newestAppointmentWithSummary{
                         AppointmentWithSummary(appointment: display)
-                            .padding()
+                            .padding(.horizontal)
+                    } else {
+                        ContentUnavailableView("No Last Appointments", systemImage: "calendar")
                     }
                     Spacer()
                 }
