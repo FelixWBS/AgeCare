@@ -10,8 +10,10 @@ import Foundation
 
 
 
+
+
 func callServer_summary(text: String, appointment: Appointment) async {
-    guard let url = URL(string: "http://127.0.0.1:8000/summary") else { return }
+    guard let url = URL(string: "https://ada2cb9a48ed.ngrok-free.app/summary") else { return }
 
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
@@ -45,7 +47,7 @@ func callServer(message: String? = nil, appointmentController: AppointmentContro
     
     var responseText: String = "NO TEXT"
     
-    guard let url = URL(string: "http://127.0.0.1:8000/appointment") else {
+    guard let url = URL(string: "https://ada2cb9a48ed.ngrok-free.app/appointment") else {
         responseText = "Invalid URL"
         return
     }
