@@ -1,0 +1,51 @@
+id,first_name,last_name,title,specialty,address,phone,email
+1,Laura,Keller,Dr. Dr.,Orthopedics,"Hauptstraße 63, 80796 Munich, Germany",+49 89 133353,contact162@clinic-example.com
+2,Nina,Wagner,Prof. Dr.,Internal Medicine,"Theresienstraße 120, 80900 Munich, Germany",+49 89 944938,contact354@clinic-example.com
+3,Mira,Lang,Dr.,Vascular Surgery,"Moosacher Straße 57, 80833 Munich, Germany",+49 89 523951,contact989@clinic-example.com
+4,Paul,Wagner,Dr.,Sports Medicine,"Schwanthalerstraße 37, 80537 Munich, Germany",+49 89 955046,contact718@clinic-example.com
+5,Tina,Seidel,Dr. Dr.,Surgery,"Ismaninger Straße 125, 80500 Munich, Germany",+49 89 626999,contact748@clinic-example.com
+6,Laura,Schmid,Dr. Dr.,Sports Medicine,"Ismaninger Straße 55, 80521 Munich, Germany",+49 89 970930,contact457@clinic-example.com
+7,David,Seidel,Prof. Dr.,Urology,"Leopoldstraße 32, 80866 Munich, Germany",+49 89 831203,contact373@clinic-example.com
+8,Sarah,Krause,Prof. Dr.,Dermatology,"Hauptstraße 33, 80669 Munich, Germany",+49 89 403348,contact195@clinic-example.com
+9,Julia,Brandt,Prof. Dr.,Urology,"Rosenheimer Straße 52, 80230 Munich, Germany",+49 89 611164,contact306@clinic-example.com
+10,Lukas,Weber,Dr. Dr.,Psychotherapy,"Moosacher Straße 19, 80716 Munich, Germany",+49 89 820613,contact489@clinic-example.com
+11,Marie,Krause,Prof. Dr.,Nephrology,"Ismaninger Straße 132, 80963 Munich, Germany",+49 89 832235,contact758@clinic-example.com
+12,Stefan,Becker,Dr.,Nuclear Medicine,"Theresienstraße 54, 80378 Munich, Germany",+49 89 348158,contact339@clinic-example.com
+13,Paul,Krause,Prof. Dr.,Urology,"Schwanthalerstraße 116, 80691 Munich, Germany",+49 89 100374,contact938@clinic-example.com
+14,Tina,Weber,Prof. Dr.,Oncology,"Theresienstraße 125, 80816 Munich, Germany",+49 89 230198,contact712@clinic-example.com
+15,Julia,Lang,Prof. Dr.,Psychiatry,"Gabelsbergerstraße 149, 80872 Munich, Germany",+49 89 737604,contact666@clinic-example.com
+16,Lukas,Schmidt,Dr. Dr.,General Medicine,"Hohenzollernstraße 108, 80419 Munich, Germany",+49 89 536961,contact440@clinic-example.com
+17,Anna,Schuster,Prof. Dr.,Pulmonology,"Dachauer Straße 60, 80799 Munich, Germany",+49 89 844436,contact423@clinic-example.com
+18,Laura,Schmidt,Dr.,Internal Medicine,"Moosacher Straße 35, 80272 Munich, Germany",+49 89 419447,contact838@clinic-example.com
+19,Tim,Wagner,Dr. Dr.,Pulmonology,"Hohenzollernstraße 60, 80617 Munich, Germany",+49 89 463879,contact483@clinic-example.com
+20,Anna,Schuster,Prof. Dr.,Dermatology,"Ismaninger Straße 46, 80274 Munich, Germany",+49 89 414250,contact282@clinic-example.com
+21,Tina,Brandt,Prof. Dr.,Emergency Medicine,"Schwanthalerstraße 50, 80451 Munich, Germany",+49 89 402957,contact200@clinic-example.com
+22,Mira,Keller,Prof. Dr.,Hematology,"Lindwurmstraße 126, 80950 Munich, Germany",+49 89 209193,contact653@clinic-example.com
+23,Paul,Lang,Dr.,Nephrology,"Gabelsbergerstraße 71, 80365 Munich, Germany",+49 89 736198,contact393@clinic-example.com
+24,Laura,Schmid,Dr.,Internal Medicine,"Lindwurmstraße 57, 80553 Munich, Germany",+49 89 173094,contact819@clinic-example.com
+25,Tim,Fischer,Dr. Dr.,Internal Medicine,"Moosacher Straße 81, 80470 Munich, Germany",+49 89 747501,contact611@clinic-example.com
+26,Lukas,Schmidt,Dr. Dr.,Sports Medicine,"Theresienstraße 64, 80570 Munich, Germany",+49 89 193389,contact115@clinic-example.com
+27,Clara,Fischer,Dr. Dr.,Dermatology,"Dachauer Straße 120, 80395 Munich, Germany",+49 89 836987,contact349@clinic-example.com
+28,Felix,Krause,Prof. Dr.,Urology,"Moosacher Straße 97, 80169 Munich, Germany",+49 89 782380,contact721@clinic-example.com
+29,Paul,Hofmann,Prof. Dr.,General Medicine,"Ismaninger Straße 62, 80775 Munich, Germany",+49 89 709353,contact231@clinic-example.com
+30,Felix,Schmidt,Dr. Dr.,Oncology,"Gabelsbergerstraße 14, 80509 Munich, Germany",+49 89 748196,contact685@clinic-example.com
+31,Clara,Wagner,Dr. Dr.,Urology,"Fraunhoferstraße 128, 80579 Munich, Germany",+49 89 248611,contact727@clinic-example.com
+32,Jan,Seidel,Dr.,Psychotherapy,"Lindwurmstraße 99, 80875 Munich, Germany",+49 89 306490,contact841@clinic-example.com
+33,Emma,Krause,Prof. Dr.,Palliative Care,"Hauptstraße 47, 80785 Munich, Germany",+49 89 139301,contact317@clinic-example.com
+34,Nina,Brandt,Prof. Dr.,Allergology,"Lindwurmstraße 83, 80371 Munich, Germany",+49 89 405129,contact854@clinic-example.com
+35,Sarah,Keller,Prof. Dr.,Endocrinology,"Theresienstraße 59, 80512 Munich, Germany",+49 89 860786,contact569@clinic-example.com
+36,Tina,Krause,Dr.,General Medicine,"Bergmannstraße 127, 80724 Munich, Germany",+49 89 768499,contact954@clinic-example.com
+37,Lukas,Schuster,Prof. Dr.,Geriatrics,"Rosenheimer Straße 32, 80718 Munich, Germany",+49 89 454350,contact341@clinic-example.com
+38,Tina,Krause,Dr.,Sports Medicine,"Sonnenstraße 107, 80457 Munich, Germany",+49 89 783904,contact858@clinic-example.com
+39,Tina,Becker,Dr.,Hematology,"Fraunhoferstraße 65, 80534 Munich, Germany",+49 89 387409,contact626@clinic-example.com
+40,David,Brandt,Dr. Dr.,General Medicine,"Schwanthalerstraße 92, 80169 Munich, Germany",+49 89 797464,contact335@clinic-example.com
+41,Jan,Keller,Dr. Dr.,Hematology,"Hohenzollernstraße 18, 80695 Munich, Germany",+49 89 826784,contact756@clinic-example.com
+42,Jan,Brandt,Prof. Dr.,Sports Medicine,"Dachauer Straße 105, 80861 Munich, Germany",+49 89 619906,contact460@clinic-example.com
+43,Julia,Weber,Dr.,Urology,"Brienner Straße 19, 80466 Munich, Germany",+49 89 119304,contact204@clinic-example.com
+44,Max,Lang,Dr. Dr.,Pulmonology,"Hauptstraße 86, 80404 Munich, Germany",+49 89 226241,contact472@clinic-example.com
+45,Lukas,Seidel,Prof. Dr.,Trauma Surgery,"Hauptstraße 106, 80103 Munich, Germany",+49 89 480086,contact684@clinic-example.com
+46,Leon,Weber,Dr.,"ENT (Ear, Nose, Throat)","Schwanthalerstraße 62, 80466 Munich, Germany",+49 89 785165,contact482@clinic-example.com
+47,Tina,Becker,Dr.,Palliative Care,"Gabelsbergerstraße 117, 80181 Munich, Germany",+49 89 658749,contact117@clinic-example.com
+48,Leon,Krause,Dr.,Nuclear Medicine,"Hauptstraße 143, 80907 Munich, Germany",+49 89 393939,contact939@clinic-example.com
+49,Leon,Seidel,Dr. Dr.,Plastic Surgery,"Fraunhoferstraße 104, 80108 Munich, Germany",+49 89 584798,contact816@clinic-example.com
+50,Sarah,Schmidt,Dr.,Cardiovascular Medicine,"Bergmannstraße 109, 80199 Munich, Germany",+49 89 102536,contact329@clinic-example.com
