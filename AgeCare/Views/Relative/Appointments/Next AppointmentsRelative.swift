@@ -10,6 +10,7 @@ import SwiftData
 
 struct Next_AppointmentsRelative: View {
     @Environment(\.modelContext) private var modelContext
+    
     @Query var appointments: [Appointment]
     private var nextAppointment: Appointment? {
         let startOfToday = Calendar.current.startOfDay(for: Date())

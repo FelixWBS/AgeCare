@@ -42,6 +42,7 @@ struct HomeRelative: View {
                     if let display = newestAppointmentWithSummary{
                         Spacer()
                         AppointmentWithSummary(appointment: display)
+                            .padding()
                     }
                     Spacer()
                 }

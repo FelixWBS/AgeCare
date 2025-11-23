@@ -39,14 +39,15 @@ struct AppointmentWithSummary: View {
                         .foregroundStyle(.secondary)
                     
                     if let summary = appointment.summary, !summary.isEmpty {
-                        TextField("Summary",text: $string )
+                        Text(summary)
                             .font(.footnote)
                             .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
                             .onAppear(){
                                 string = summary
                             }
                     }
-                }
+                }.padding(.top)
                 Spacer()
 
                 // Quick actions
@@ -84,7 +85,6 @@ struct AppointmentWithSummary: View {
         .onAppear(){
             print(user.first!.name)
         }
-        .frame(height: 200)
         .glassEffect(in: .rect(cornerRadius: 10.0))
         .mask {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
